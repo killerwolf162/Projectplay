@@ -6,13 +6,19 @@ using UnityEngine.InputSystem;
 public class WeaponAttack : MonoBehaviour
 {
 
-    private GameObject Flame;
+    
+    [SerializeField] private GameObject redParticles, yellowParticles, orangeParticles;
+    [SerializeField] private GameObject FlameHitbox;
+
+    private List<GameObject> particles = new List<GameObject>();
 
     public bool isAttacking;
 
     private void Awake()
     {
-        Flame = GameObject.FindGameObjectWithTag("FlamethrowerFlame");
+        particles.Add(redParticles);
+        particles.Add(yellowParticles);
+        particles.Add(orangeParticles);
     }
 
     private void FixedUpdate()
@@ -23,9 +29,22 @@ public class WeaponAttack : MonoBehaviour
     public void Attack()
     {
         if (isAttacking == true)
-            Flame.SetActive(true);
+        {
+            foreach(GameObject particleSystem in particles)
+            {
+                particleSystem.SetActive(true);
+            }
+            FlameHitbox.SetActive(true);
+        }
         else
-            Flame.SetActive(false);
+        {
+            foreach (GameObject particleSystem in particles)
+            {
+                particleSystem.SetActive(false);
+            }
+            FlameHitbox.SetActive(false);
+        }
+
     }
 
     public void OnAttack(InputAction.CallbackContext input_value)
