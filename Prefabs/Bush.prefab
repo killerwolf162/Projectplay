@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1857036289568449567}
   - component: {fileID: 5852391217553425311}
   - component: {fileID: 3716828614458382483}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750329423471506157}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.295, z: 0}
   m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5790583722094738756}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5852391217553425311
 SpriteRenderer:
@@ -95,25 +95,6 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -132,7 +113,6 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5773587}
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
-  m_UseDelaunayMesh: 0
 --- !u!1 &6780646977091650992
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +125,7 @@ GameObject:
   - component: {fileID: 3892102687270844400}
   - component: {fileID: 7690116496412323771}
   - component: {fileID: 8120659900707920027}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +139,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6780646977091650992}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.6003301, y: -2.6628878, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1.5}
@@ -168,6 +147,7 @@ Transform:
   - {fileID: 4282337691001023468}
   - {fileID: 1857036289568449567}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3892102687270844400
 SpriteRenderer:
@@ -231,25 +211,6 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -278,21 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac74b2ff985233448b9045361f7d0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartBurn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8120659900707920027}
-        m_TargetAssemblyTypeName: Burn, Assembly-CSharp
-        m_MethodName: StartBurning
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   health: 20
   spriteRenderer1: {fileID: 3892102687270844400}
   spriteRenderer2: {fileID: 0}
@@ -303,12 +249,15 @@ MonoBehaviour:
   collider: {fileID: 7690116496412323771}
   burnRate: 0.02
   burnDelay: 0.2
+  stopBurnDelay: 3
+  BurnableObjects:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &583392694925633236
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 5790583722094738756}
     m_Modifications:
     - target: {fileID: 1173338911960510774, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
@@ -326,6 +275,14 @@ PrefabInstance:
     - target: {fileID: 1411139701933090904, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_Name
       value: FireParticles Bush
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411139701933090904, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775979580476392957, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1775979580476392957, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_IsActive
@@ -404,17 +361,22 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6785580558772871999, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785580558772871999, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7244341509010386685, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7244341509010386685, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
 --- !u!1 &1206169291506656041 stripped
 GameObject:

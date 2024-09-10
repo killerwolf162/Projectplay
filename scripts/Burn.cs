@@ -5,16 +5,17 @@ using UnityEngine.Events;
 
 public class Burn : MonoBehaviour
 {
-    public UnityEvent StartBurn;
-
     [SerializeField] private float health;
     [SerializeField] private SpriteRenderer spriteRenderer1, spriteRenderer2, ashRenderer;
     [SerializeField] private GameObject redParticles, yellowParticles, orangeParticles;
     [SerializeField] private Collider2D collider;
     [SerializeField] private float burnRate;
     [SerializeField] private float burnDelay;
+    [SerializeField] private float stopBurnDelay;
+    [SerializeField] private LayerMask burnLayer;
 
     private List<GameObject> particles = new List<GameObject>();
+    private List<GameObject> burnAbleObjects = new List<GameObject>();
 
     private void Awake()
     {
@@ -24,9 +25,10 @@ public class Burn : MonoBehaviour
     }
     private void Update()
     {
-        if(spriteRenderer1 != null)
+        if (spriteRenderer1 != null)
             if (health <= 0)
-                StartBurn.Invoke();
+                StartBurning();
+
     }
     private void TakeDamage(int _damage)
     {
@@ -34,8 +36,9 @@ public class Burn : MonoBehaviour
     }
     public void StartBurning()
     {
-        Invoke("TurnFireOn", 0f);
-        Invoke("TurnToAsh", 5f);
+        TurnFireOn();
+        SetOtherOnFire();
+        Invoke("TurnToAsh", stopBurnDelay);
     }
     private void TurnFireOn()
     {
@@ -76,6 +79,47 @@ public class Burn : MonoBehaviour
         return _newColor;
     }
 
+    private void CheckForOthers()
+    {
+        List<GameObject> _burnableObjects = new List<GameObject>();
+        Collider2D[] allColliders;
+
+        float _xPos = this.transform.position.x;
+        float _yPos = this.transform.position.y;
+
+        allColliders = Physics2D.OverlapCircleAll(new Vector2(_xPos,_yPos), 5f, burnLayer);
+
+        foreach (Collider2D _collider in allColliders)
+        {
+            Debug.Log("hit");
+            burnAbleObjects.Add(_collider.transform.gameObject);
+            Debug.Log(burnAbleObjects);
+        }
+
+        if(allColliders.Length == 0)
+        {
+            Debug.Log("No hits");
+        }
+
+    }
+
+    private void SetOtherOnFire()
+    {
+        CheckForOthers();
+        foreach (GameObject burnAbleObject in burnAbleObjects)
+        {
+            
+            if (burnAbleObject.GetComponent<Burn>() != null)
+            {
+                Burn _burn;
+                _burn = burnAbleObject.GetComponent<Burn>();
+                Debug.Log("starting to burn");
+                _burn.StartBurning();
+            }
+            
+            
+        }
+    }
     private IEnumerator changeSpriteColorToBlack(SpriteRenderer _spriteRenderer)
     {
         if (_spriteRenderer.color.g < 0)
@@ -83,8 +127,6 @@ public class Burn : MonoBehaviour
             StopAllCoroutines();
         }
         yield return new WaitForSeconds(burnDelay);
-
-        Debug.Log(_spriteRenderer.color);
         _spriteRenderer.color = changeColorToBlack(_spriteRenderer.color);
     }
 
