@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1857036289568449567}
   - component: {fileID: 5852391217553425311}
   - component: {fileID: 3716828614458382483}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,12 +247,13 @@ MonoBehaviour:
   yellowParticles: {fileID: 6211476543767414251}
   orangeParticles: {fileID: 7823230465794885673}
   collider: {fileID: 7690116496412323771}
-  burnRate: 0.02
+  burnRate: 0.0002
   burnDelay: 0.2
-  stopBurnDelay: 3
-  BurnableObjects:
+  stopBurnDelay: 4
+  burnLayer:
     serializedVersion: 2
     m_Bits: 64
+  isBurning: 0
 --- !u!1001 &583392694925633236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,11 +279,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411139701933090904, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1775979580476392957, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1775979580476392957, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_IsActive
@@ -362,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6785580558772871999, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6785580558772871999, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_IsActive
@@ -370,7 +371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7244341509010386685, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7244341509010386685, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_IsActive

@@ -17,6 +17,8 @@ public class Burn : MonoBehaviour
     private List<GameObject> particles = new List<GameObject>();
     private List<GameObject> burnAbleObjects = new List<GameObject>();
 
+    public bool isBurning = false;
+
     private void Awake()
     {
         particles.Add(redParticles);
@@ -25,9 +27,12 @@ public class Burn : MonoBehaviour
     }
     private void Update()
     {
-        if (spriteRenderer1 != null)
-            if (health <= 0)
-                StartBurning();
+        if (isBurning != true)
+        {      
+            if (spriteRenderer1 != null)
+                if (health <= 0)
+                    Invoke("StartBurning", 0f);
+        }
 
     }
     private void TakeDamage(int _damage)
@@ -36,21 +41,22 @@ public class Burn : MonoBehaviour
     }
     public void StartBurning()
     {
+        isBurning = true;
         TurnFireOn();
-        SetOtherOnFire();
+        Invoke("SetOtherOnFire", 3f);
         Invoke("TurnToAsh", stopBurnDelay);
     }
     private void TurnFireOn()
-    {
+    {      
         if(particles.Count > 0)
         {
             foreach (GameObject _particleSystem in particles)
                 _particleSystem.SetActive(true);
         }   
         if(spriteRenderer1 != null)
-            StartCoroutine(changeSpriteColorToBlack(spriteRenderer1));
+            StartCoroutine(changeSpriteColorToBlack(spriteRenderer1));  
         if (spriteRenderer2 != null)
-            StartCoroutine(changeSpriteColorToBlack(spriteRenderer2));
+            StartCoroutine(changeSpriteColorToBlack(spriteRenderer2));           
     }
     private void TurnToAsh()
     {
@@ -89,50 +95,52 @@ public class Burn : MonoBehaviour
 
         allColliders = Physics2D.OverlapCircleAll(new Vector2(_xPos,_yPos), 5f, burnLayer);
 
+        Debug.Log(allColliders.Length);
+
         foreach (Collider2D _collider in allColliders)
         {
-            Debug.Log("hit");
             burnAbleObjects.Add(_collider.transform.gameObject);
-            Debug.Log(burnAbleObjects);
         }
-
-        if(allColliders.Length == 0)
-        {
-            Debug.Log("No hits");
-        }
-
     }
 
     private void SetOtherOnFire()
     {
         CheckForOthers();
         foreach (GameObject burnAbleObject in burnAbleObjects)
-        {
-            
-            if (burnAbleObject.GetComponent<Burn>() != null)
+        {    
+            Burn _burn = burnAbleObject.GetComponent<Burn>();
+            if(_burn.isBurning != true)
             {
-                Burn _burn;
-                _burn = burnAbleObject.GetComponent<Burn>();
-                Debug.Log("starting to burn");
-                _burn.StartBurning();
-            }
-            
-            
+                _burn.isBurning = true;
+                _burn.TurnFireOn();
+                _burn.StartCoroutine(changeSpriteColorToBlack(_burn.spriteRenderer1));
+                _burn.StartCoroutine(changeSpriteColorToBlack(_burn.spriteRenderer2));
+                _burn.Invoke("SetOtherOnFire", 3f);
+                _burn.Invoke("TurnToAsh", stopBurnDelay);
+            }                        
         }
     }
     private IEnumerator changeSpriteColorToBlack(SpriteRenderer _spriteRenderer)
     {
-        if (_spriteRenderer.color.g < 0)
-        {
-            StopAllCoroutines();
-        }
         yield return new WaitForSeconds(burnDelay);
-        _spriteRenderer.color = changeColorToBlack(_spriteRenderer.color);
+
+        Color _newColor = changeColorToBlack(_spriteRenderer.color);
+        Debug.Log(_newColor);
+        _spriteRenderer.color = _newColor;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "FlamethrowerFlame")
+        {
             TakeDamage(1);
+        }
+
+        //if (spriteRenderer1 != null)
+        //    if (health <= 0)
+        //        StartBurning();
+            
+
+
     }
 }
