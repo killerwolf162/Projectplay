@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 394357493540175990, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: m_Name
-      value: FireParticles Variant
+      value: FireParticles Tree's
       objectReference: {fileID: 0}
     - target: {fileID: 478757728191863064, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: InitialModule.maxNumParticles

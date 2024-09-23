@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Burn : MonoBehaviour
 {
     [SerializeField] public float health;
-    [SerializeField] private GameObject redParticles, yellowParticles, orangeParticles;
+    [SerializeField] private GameObject redParticles, yellowParticles, orangeParticles, blackParticles;
     [SerializeField] private Collider2D collider;
     [SerializeField] private LayerMask burnLayer;
 
@@ -21,7 +21,8 @@ public class Burn : MonoBehaviour
     {
         particles.Add(redParticles);
         particles.Add(yellowParticles);
-        particles.Add(orangeParticles);        
+        particles.Add(orangeParticles);
+        particles.Add(blackParticles);
     }
     private void FixedUpdate()
     {

@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 394357493540175990, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: m_Name
-      value: FireParticles Variant
+      value: FireParticles Bush
       objectReference: {fileID: 0}
     - target: {fileID: 478757728191863064, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 478757728191863064, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -22,11 +22,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 478757728191863064, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 478757728191863064, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478757728191863064, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 514142737298992541, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.72
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 514142737298992541, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: m_LocalPosition.y
@@ -50,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 622305903953911093, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 50
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 622305903953911093, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -58,7 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 622305903953911093, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029607001194327507, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
+      propertyPath: m_Name
+      value: YellowParticleSystem
       objectReference: {fileID: 0}
     - target: {fileID: 1241006754951612398, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: m_SortingOrder
@@ -136,6 +148,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 5244252139150232337, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
+      propertyPath: m_Name
+      value: RedParticleSystem
+      objectReference: {fileID: 0}
     - target: {fileID: 5735450229306595917, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: ShapeModule.type
       value: 4
@@ -166,7 +182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5735450229306595917, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5735450229306595917, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -174,7 +190,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5735450229306595917, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735450229306595917, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735450229306595917, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.98039216
       objectReference: {fileID: 0}
     - target: {fileID: 8118082694496983750, guid: dc9ae78a85718754d954ddbe7946b626, type: 3}
       propertyPath: m_SortingOrder

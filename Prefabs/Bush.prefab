@@ -283,6 +283,7 @@ MonoBehaviour:
   redParticles: {fileID: 1206169291506656041}
   yellowParticles: {fileID: 6211476543767414251}
   orangeParticles: {fileID: 7823230465794885673}
+  blackParticles: {fileID: 5186024210109250961}
   collider: {fileID: 7690116496412323771}
   burnLayer:
     serializedVersion: 2
@@ -303,6 +304,13 @@ MonoBehaviour:
   rend1: {fileID: 3892102687270844400}
   rend2: {fileID: 0}
   ashRend: {fileID: 5852391217553425311}
+  branch1: {fileID: 0}
+  branch2: {fileID: 0}
+  branch3: {fileID: 0}
+  branch4: {fileID: 0}
+  branch5: {fileID: 0}
+  branch6: {fileID: 0}
+  branch7: {fileID: 0}
   burnTime: 5
   colorChangeTime: 5
 --- !u!1001 &583392694925633236
@@ -315,7 +323,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1173338911960510774, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1173338911960510774, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -323,11 +331,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1173338911960510774, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1283226828489115059, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.95
+      value: 3.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283226828489115059, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1411139701933090904, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_Name
@@ -397,9 +409,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3761560721043140829, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.22
+      objectReference: {fileID: 0}
     - target: {fileID: 3920217846997970808, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920217846997970808, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5755834633333414725, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5858666960183288225, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_LocalScale.z
@@ -407,7 +431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6445780817415598691, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6445780817415598691, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -415,7 +439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6445780817415598691, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6785580558772871999, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_Layer
@@ -446,6 +470,11 @@ GameObject:
 --- !u!4 &4282337691001023468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3707953295163673912, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+  m_PrefabInstance: {fileID: 583392694925633236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5186024210109250961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5755834633333414725, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
   m_PrefabInstance: {fileID: 583392694925633236}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6211476543767414251 stripped
