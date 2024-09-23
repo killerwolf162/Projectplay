@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750329423471506157}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.295, z: 0}
   m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5790583722094738756}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5852391217553425311
 SpriteRenderer:
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
   m_FlipX: 0
@@ -95,6 +95,25 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -113,6 +132,7 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5773587}
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
+  m_UseDelaunayMesh: 0
 --- !u!1 &6780646977091650992
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +145,7 @@ GameObject:
   - component: {fileID: 3892102687270844400}
   - component: {fileID: 7690116496412323771}
   - component: {fileID: 8120659900707920027}
+  - component: {fileID: 2666833401372027368}
   m_Layer: 6
   m_Name: Bush
   m_TagString: Untagged
@@ -139,6 +160,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6780646977091650992}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.6003301, y: -2.6628878, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1.5}
@@ -147,7 +169,6 @@ Transform:
   - {fileID: 4282337691001023468}
   - {fileID: 1857036289568449567}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3892102687270844400
 SpriteRenderer:
@@ -211,6 +232,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -240,34 +280,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  spriteRenderer1: {fileID: 3892102687270844400}
-  spriteRenderer2: {fileID: 0}
-  ashRenderer: {fileID: 5852391217553425311}
   redParticles: {fileID: 1206169291506656041}
   yellowParticles: {fileID: 6211476543767414251}
   orangeParticles: {fileID: 7823230465794885673}
   collider: {fileID: 7690116496412323771}
-  burnRate: 0.0002
-  burnDelay: 0.2
-  stopBurnDelay: 4
   burnLayer:
     serializedVersion: 2
     m_Bits: 64
   isBurning: 0
+--- !u!114 &2666833401372027368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780646977091650992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbee1a9d555f1645879410652f73339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend1: {fileID: 3892102687270844400}
+  rend2: {fileID: 0}
+  ashRend: {fileID: 5852391217553425311}
+  burnTime: 5
+  colorChangeTime: 5
 --- !u!1001 &583392694925633236
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5790583722094738756}
     m_Modifications:
+    - target: {fileID: 1173338911960510774, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1173338911960510774, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1173338911960510774, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1283226828489115059, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_LocalScale.z
@@ -291,7 +347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2183882929704858907, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 20
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2183882929704858907, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -299,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2183882929704858907, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3707953295163673912, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: m_LocalPosition.x
@@ -351,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6445780817415598691, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6445780817415598691, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -378,6 +434,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad00c9011664c2489e74ebc6289c494, type: 3}
 --- !u!1 &1206169291506656041 stripped
 GameObject:

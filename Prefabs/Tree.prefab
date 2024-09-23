@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3969652477399754399}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 127473883447094685}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8206088040604658853
 SpriteRenderer:
@@ -108,13 +108,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4553904337158602230}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.48, z: 0}
   m_LocalScale: {x: 2, y: 1.49, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 127473883447094685}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7871190494091660049
 SpriteRenderer:
@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127473883447094685}
   - component: {fileID: 5515615412193306985}
+  - component: {fileID: 6415102661079458378}
   - component: {fileID: 803704315241590821}
   m_Layer: 6
   m_Name: Tree
@@ -193,6 +194,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6451427703403764597}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -203,7 +205,6 @@ Transform:
   - {fileID: 10427282798791118}
   - {fileID: 1347473711295733675}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5515615412193306985
 MonoBehaviour:
@@ -218,20 +219,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  spriteRenderer1: {fileID: 8206088040604658853}
-  spriteRenderer2: {fileID: 7871190494091660049}
-  ashRenderer: {fileID: 5175392319990524679}
   redParticles: {fileID: 4135421385892255598}
   yellowParticles: {fileID: 9218096866895983020}
   orangeParticles: {fileID: 4994326972971859054}
   collider: {fileID: 803704315241590821}
-  burnRate: 0.0001
-  burnDelay: 0.2
-  stopBurnDelay: 10
   burnLayer:
     serializedVersion: 2
     m_Bits: 64
   isBurning: 0
+--- !u!114 &6415102661079458378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451427703403764597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbee1a9d555f1645879410652f73339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend1: {fileID: 8206088040604658853}
+  rend2: {fileID: 7871190494091660049}
+  ashRend: {fileID: 5175392319990524679}
+  burnTime: 10
+  colorChangeTime: 10
 --- !u!60 &803704315241590821
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -242,6 +254,25 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -258,13 +289,15 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 1.0004754, y: 0.7353612}
-      - {x: 1.0095339, y: 2.2297442}
-      - {x: -1.0064594, y: 2.2297218}
+      - {x: 0.29444763, y: 0.73486245}
+      - {x: 0.0037367195, y: 0.73440343}
+      - {x: -0.21997662, y: 0.7357615}
       - {x: -1.0045154, y: 0.7334932}
-      - {x: -0.49477538, y: 0.73581225}
+      - {x: -0.50077605, y: 0.7255317}
       - {x: -0.49590272, y: -1.5047696}
       - {x: 0.5012825, y: -1.4992377}
-      - {x: 0.49489748, y: 0.733294}
+      - {x: 0.5013975, y: 0.7268178}
+  m_UseDelaunayMesh: 0
 --- !u!1 &8361103571947761158
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,13 +323,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8361103571947761158}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.002, y: -1.201, z: 0.091220714}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 127473883447094685}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5175392319990524679
 SpriteRenderer:
@@ -338,7 +371,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
   m_FlipX: 0
@@ -360,6 +393,25 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -378,13 +430,23 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5773587}
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &2433768798433432211
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 127473883447094685}
     m_Modifications:
+    - target: {fileID: 1173338911960510774, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173338911960510774, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1411139701933090904, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
       propertyPath: m_Name
       value: FireParticles Tree's
@@ -400,6 +462,14 @@ PrefabInstance:
     - target: {fileID: 1775979580476392957, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183882929704858907, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183882929704858907, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3707953295163673912, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
       propertyPath: m_RootOrder
@@ -445,6 +515,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6445780817415598691, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6445780817415598691, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6785580558772871999, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -462,6 +540,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2fc9eaa008c80c4195e9729b8cee19f, type: 3}
 --- !u!4 &1347473711295733675 stripped
 Transform:

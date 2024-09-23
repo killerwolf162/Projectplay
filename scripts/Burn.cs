@@ -5,14 +5,12 @@ using UnityEngine.Events;
 
 public class Burn : MonoBehaviour
 {
-    [SerializeField] private float health;
-    [SerializeField] private SpriteRenderer spriteRenderer1, spriteRenderer2, ashRenderer;
+    [SerializeField] public float health;
     [SerializeField] private GameObject redParticles, yellowParticles, orangeParticles;
     [SerializeField] private Collider2D collider;
-    [SerializeField] private float burnRate;
-    [SerializeField] private float burnDelay;
-    [SerializeField] private float stopBurnDelay;
     [SerializeField] private LayerMask burnLayer;
+
+    private int frames = 0;
 
     private List<GameObject> particles = new List<GameObject>();
     private List<GameObject> burnAbleObjects = new List<GameObject>();
@@ -23,19 +21,24 @@ public class Burn : MonoBehaviour
     {
         particles.Add(redParticles);
         particles.Add(yellowParticles);
-        particles.Add(orangeParticles);
+        particles.Add(orangeParticles);        
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (isBurning != true)
         {      
-            if (spriteRenderer1 != null)
-                if (health <= 0)
-                    Invoke("StartBurning", 0f);
+          if (health <= 0)
+            {
+                StartBurning();
+            }            
+        }
+        if(isBurning == true)
+        {
+            SetOtherOnFire();
         }
 
     }
-    private void TakeDamage(int _damage)
+    private void TakeDamage(float _damage)
     {
         health -= _damage;
     }
@@ -43,8 +46,7 @@ public class Burn : MonoBehaviour
     {
         isBurning = true;
         TurnFireOn();
-        Invoke("SetOtherOnFire", 3f);
-        Invoke("TurnToAsh", stopBurnDelay);
+        
     }
     private void TurnFireOn()
     {      
@@ -52,37 +54,15 @@ public class Burn : MonoBehaviour
         {
             foreach (GameObject _particleSystem in particles)
                 _particleSystem.SetActive(true);
-        }   
-        if(spriteRenderer1 != null)
-            StartCoroutine(changeSpriteColorToBlack(spriteRenderer1));  
-        if (spriteRenderer2 != null)
-            StartCoroutine(changeSpriteColorToBlack(spriteRenderer2));           
+        }                     
     }
-    private void TurnToAsh()
+    public void TurnFireOFF()
     {
-        if (spriteRenderer1 != null)
-            spriteRenderer1.enabled = false;
-        if (spriteRenderer2 != null)
-            spriteRenderer2.enabled = false;
-
-        collider.enabled = false;
-
-        foreach (GameObject _particleSystem in particles)
+        if (particles.Count > 0)
         {
-            _particleSystem.SetActive(false);
+            foreach (GameObject _particleSystem in particles)
+                _particleSystem.SetActive(false);
         }
-
-        ashRenderer.enabled = true;
-        Destroy(this.gameObject.GetComponent<Burn>());
-    }
-
-    private Color changeColorToBlack(Color _color)
-    {
-        Color _newColor = new Color();
-
-        _newColor = _color + new Color(-burnRate, -burnRate, -burnRate, 1);
-
-        return _newColor;
     }
 
     private void CheckForOthers()
@@ -93,7 +73,7 @@ public class Burn : MonoBehaviour
         float _xPos = this.transform.position.x;
         float _yPos = this.transform.position.y;
 
-        allColliders = Physics2D.OverlapCircleAll(new Vector2(_xPos,_yPos), 5f, burnLayer);
+        allColliders = Physics2D.OverlapCircleAll(new Vector2(_xPos,_yPos), 2.5f, burnLayer);
 
         Debug.Log(allColliders.Length);
 
@@ -111,22 +91,16 @@ public class Burn : MonoBehaviour
             Burn _burn = burnAbleObject.GetComponent<Burn>();
             if(_burn.isBurning != true)
             {
-                _burn.isBurning = true;
-                _burn.TurnFireOn();
-                _burn.StartCoroutine(changeSpriteColorToBlack(_burn.spriteRenderer1));
-                _burn.StartCoroutine(changeSpriteColorToBlack(_burn.spriteRenderer2));
-                _burn.Invoke("SetOtherOnFire", 3f);
-                _burn.Invoke("TurnToAsh", stopBurnDelay);
+                frames++;
+                if( frames % 100 == 0)
+                {
+                    Debug.Log("I did damage");
+                    _burn.TakeDamage(1f);
+                    frames = 0;
+                }            
+                
             }                        
         }
-    }
-    private IEnumerator changeSpriteColorToBlack(SpriteRenderer _spriteRenderer)
-    {
-        yield return new WaitForSeconds(burnDelay);
-
-        Color _newColor = changeColorToBlack(_spriteRenderer.color);
-        Debug.Log(_newColor);
-        _spriteRenderer.color = _newColor;
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -135,12 +109,5 @@ public class Burn : MonoBehaviour
         {
             TakeDamage(1);
         }
-
-        //if (spriteRenderer1 != null)
-        //    if (health <= 0)
-        //        StartBurning();
-            
-
-
     }
 }
